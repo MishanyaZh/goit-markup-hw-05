@@ -24,6 +24,10 @@
   --wot-we-do-bg: rgba(47, 48, 58, 0.8);
 
   --hover-overlay: rgba(33, 150, 243, 0.9);
+
+  --modal-backdrop: rgba(0, 0, 0, 0.2);
+
+  --button-modal-border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 body {
@@ -724,34 +728,28 @@ header {
 }
 
 .overlay-cards-item {
-
   position: absolute;
   top: 0;
   left: 0;
-
   /* width: 370px;
   height: 294px; */
-
+  width: 100%;
+  height: 100%;
   padding: 63px 24px;
 
   background: var(--hover-overlay);
 
   transform: translateY(100%);
   transition: transform var(--time-anim-func);
-
-  width: 100%;
-  height: 100%;
 }
 
 .overlay-content {
-
   text-decoration: none;
   color: var(--white-text-color);
-  
+
   font-size: 18px;
   line-height: 1.6;
   letter-spacing: 0.03em;
-
 }
 
 .cards-item:hover .overlay-cards-item {
@@ -759,13 +757,11 @@ header {
 }
 
 .cards-item-link:focus,
-.cards-item-link:hover  {
+.cards-item-link:hover {
   outline: none;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
-
-
 
 .cards-item-content {
   padding: 20px 24px;
@@ -773,6 +769,72 @@ header {
 
 .cards-item-content h3 {
   margin-bottom: 4px;
+}
+
+/* modals */
+
+.backdrop {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  opacity: 1;
+  transition: opacity 250ms var(--anim-func);
+
+  background-color: var(--modal-backdrop);
+}
+
+.backdrop.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.9);
+  opacity: 0;
+}
+
+.modal {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+  
+  width: 528px;
+  height: 581px;
+
+  padding: 40px;
+
+  background: var(--white-text-color);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  transition: opacity 250ms var(--anim-func), transform 250ms var(--anim-func);
+}
+
+.button-modal {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+
+  display: flex;
+  align-items: center;
+
+  border: var(--button-modal-border);
+  border-radius: 50%;
+  background-color: var(--white-text-color);
+
+  fill: var(--logo-text-color);
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  
 }
 
 /* font-family: 'Raleway', sans-serif;
