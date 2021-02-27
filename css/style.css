@@ -781,10 +781,12 @@ header {
   width: 100%;
   height: 100%;
 
+  background-color: var(--modal-backdrop);
+
   opacity: 1;
   transition: opacity 250ms var(--anim-func);
 
-  background-color: var(--modal-backdrop);
+  
 }
 
 .backdrop.is-hidden {
@@ -794,7 +796,7 @@ header {
 }
 
 .backdrop.is-hidden .modal {
-  transform: translate(-50%, -50%) scale(0.9);
+  transform: translate(-50%, -50%) scale(0.7);
   opacity: 0;
 }
 
